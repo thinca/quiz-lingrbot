@@ -16,7 +16,7 @@ class Quiz
     else
       answers.shuffle!
     end
-    @answer = answers.index{ |a, n| n == 1 } + 1  # 1 origin
+    @answer = answers.index {|a, n| n == 1 } + 1  # 1 origin
     @answers = answers.map(&:first)
     @panelist = {}
     @nicknames = {}
@@ -31,7 +31,7 @@ class Quiz
   end
 
   def panelist
-    rights = @panelist.select{ |user, answer| answer == @answer }.keys.map{ |user| "#{@nicknames[user]} さん" }
+    rights = @panelist.select {|user, answer| answer == @answer }.keys.map {|user| "#{@nicknames[user]} さん" }
     return '正解者はいませんでした。' if rights.empty?
     "正解者は #{rights.join('、')}。おめでとうございます。"
   end
@@ -86,7 +86,7 @@ end
 post '/' do
   content_type :text
   request_data = JSON.parse(request.body.read)
-  request_data['events'].select{ |e| e['message'] }.map do |e|
+  request_data['events'].select {|e| e['message'] }.map do |e|
     m = e['message']
     text = m['text']
     room = m['room']
