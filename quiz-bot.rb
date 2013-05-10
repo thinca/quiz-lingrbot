@@ -71,10 +71,10 @@ def quiz_from_phrase(phrase)
 end
 
 def say(room, text)
-  open("http://lingr.com/api/room/say?room=#{room}&bot=#{$config.bot_name}&text=#{CGI.escape(text)}&bot_verifier=#{$config.bot_verifier}")
+  open("http://lingr.com/api/room/say?room=#{room}&bot=#{CONFIG.bot_name}&text=#{CGI.escape(text)}&bot_verifier=#{CONFIG.bot_verifier}")
 end
 
-$config = Hashie::Mash.new(YAML.load(ARGF))
+CONFIG = Hashie::Mash.new(YAML.load(ARGF))
 
 quiz = {}
 t = nil
