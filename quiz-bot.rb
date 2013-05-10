@@ -34,7 +34,7 @@ class Quiz
   end
 
   def answer_list
-    @answers.each_with_index.map{ |a, i| "#{(i + 1)}. #{a}" }.join("\n")
+    @answers.map.with_index {|a, i| "#{(i + 1)}. #{a}" }.join("\n")
   end
 
   def panelist
