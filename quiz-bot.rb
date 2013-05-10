@@ -6,13 +6,6 @@ require 'hashie'
 require 'open-uri'
 require 'cgi'
 
-class User
-  attr_accessor :name, :point
-end
-
-class Score
-end
-
 class Quiz
 
   def initialize(json)
