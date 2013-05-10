@@ -86,7 +86,7 @@ end
 post '/' do
   content_type :text
   request_data = JSON.parse(request.body.read)
-  request_data['events'].select {|e| e['message'] }.map do |e|
+  request_data['events'].select {|e| e['message'] }.each do |e|
     m = e['message']
     text = m['text']
     room = m['room']
