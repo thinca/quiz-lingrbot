@@ -10,7 +10,7 @@ class Quiz
 
   def initialize(json)
     @question_text = json['question']
-    answers = json['answers'].zip(iterate(1, &:succ)).shuffle
+    answers = json['answers'].zip(iterate(1, &:succ))
     if answers.length == 2
       answers.sort!.reverse!  # o x
     else
