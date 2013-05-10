@@ -37,7 +37,7 @@ class Quiz
   end
 
   def answer(user, nick, answer)
-    return unless answer =~ /^\d+$/
+    return unless /^\d+$/ =~ answer
     answer = answer.to_i
     return unless (1..@answers.length).include? answer
     @panelist[user] = answer
@@ -90,7 +90,7 @@ post '/' do
     m = e['message']
     text = m['text']
     room = m['room']
-    if text =~ /^#quiz/
+    if /^#quiz/ =~ text
       return '現在出題中です。' if quiz[room]
 
       phrase = text[/^#quiz\s*(.+)/, 1]
