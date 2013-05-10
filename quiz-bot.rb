@@ -5,6 +5,7 @@ require 'yaml'
 require 'hashie'
 require 'open-uri'
 require 'cgi'
+require 'erb'
 
 class Quiz
 
@@ -67,11 +68,11 @@ def quiz_from_genre(genre)
 end
 
 def quiz_from_phrase(phrase)
-  JSON.parse(open("http://api.quizken.jp/api/quiz-search/api_key/ma7/phrase/#{CGI.escape(phrase)}/count/50").read).sample
+  JSON.parse(open("http://api.quizken.jp/api/quiz-search/api_key/ma7/phrase/#{ERB::Util.url_encode(phrase)}/count/50").read).sample
 end
 
 def say(room, text)
-  open("http://lingr.com/api/room/say?room=#{room}&bot=#{CONFIG.bot_name}&text=#{CGI.escape(text)}&bot_verifier=#{CONFIG.bot_verifier}")
+  open("http://lingr.com/api/room/say?room=#{room}&bot=#{CONFIG.bot_name}&text=#{ERB::Util.url_encode(text)}&bot_verifier=#{CONFIG.bot_verifier}")
 end
 
 CONFIG = Hashie::Mash.new(YAML.load(ARGF))
