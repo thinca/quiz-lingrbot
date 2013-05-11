@@ -4,7 +4,6 @@ require 'json'
 require 'yaml'
 require 'hashie'
 require 'open-uri'
-require 'cgi'
 require 'erb'
 
 class Quiz
