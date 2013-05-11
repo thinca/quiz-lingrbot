@@ -75,6 +75,9 @@ def say(room, text)
 end
 
 CONFIG = Hashie::Mash.new(YAML.load(ARGF))
+if CONFIG.port
+  set :port, CONFIG.port
+end
 
 quiz = {}
 t = nil
